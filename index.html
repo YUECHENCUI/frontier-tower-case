@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontier Tower · 强运营型科创空间｜TEKUMA Case</title>
+  <meta name="description" content="Kit / TEKUMA 城市设计案例：Frontier Tower — SF 深科技垂直村落；办公去化通过强运营增强弹性与产品力。" />
+  <style>
+    :root {
+      --cream: #f9f7f2;
+      --cream-deep: #f0ebe1;
+      --ink: #161616;
+      --muted: #6a655c;
+      --line: #d9d2c4;
+      --orange: #e85d04;
+      --orange-soft: #f4a261;
+      --orange-wash: rgba(232, 93, 4, 0.08);
+      --serif: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "STSong", "SimSun", Georgia, serif;
+      --sans: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #111;
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .viewport {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #111;
+    }
+
+    .stage {
+      position: relative;
+      width: min(100vw, calc(100vh * 16 / 9));
+      height: min(100vh, calc(100vw * 9 / 16));
+      overflow: hidden;
+      background: var(--cream);
+      box-shadow: 0 20px 60px rgba(0,0,0,.45);
+      font-size: calc(min(100vw, calc(100vh * 16 / 9)) / 80);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 1.1em 1.4em 0.85em;
+      gap: 0.7em;
+    }
+
+    /* —— Header —— */
+    .top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1em;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.55em;
+    }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 0.55em;
+      font-size: 0.72em;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .kicker .dot {
+      width: 0.55em;
+      height: 0.55em;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+
+    .title-block h1 {
+      font-family: var(--serif);
+      font-size: 2.2em;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      margin-top: 0.2em;
+    }
+
+    .title-block h1 .en {
+      font-family: var(--sans);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--orange);
+      margin-left: 0.25em;
+    }
+
+    .subtitle {
+      margin-top: 0.28em;
+      font-size: 0.92em;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .subtitle strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .meta-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35em;
+      justify-content: flex-end;
+      align-items: flex-start;
+      max-width: 30em;
+    }
+
+    .pill {
+      font-size: 0.68em;
+      letter-spacing: 0.06em;
+      padding: 0.35em 0.7em;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .pill.accent {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+    }
+
+    /* —— Body —— */
+    .body {
+      display: grid;
+      grid-template-columns: 1.05fr 1.35fr;
+      gap: 0.9em;
+      min-height: 0;
+    }
+
+    .visual {
+      position: relative;
+      border-radius: 0.35em;
+      overflow: hidden;
+      background: #2a241c;
+      min-height: 0;
+    }
+
+    .visual .hero {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 35%;
+      display: block;
+    }
+
+    .floor-tag {
+      position: absolute;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 0.45em;
+      max-width: 62%;
+      pointer-events: auto;
+    }
+
+    .floor-tag .badge {
+      flex-shrink: 0;
+      background: var(--cream);
+      color: var(--ink);
+      border: 1.5px solid rgba(22,22,22,.12);
+      border-radius: 0.28em;
+      padding: 0.45em 0.7em 0.4em;
+      box-shadow: 0 8px 22px rgba(0,0,0,.28);
+      line-height: 1.25;
+    }
+
+    .floor-tag .badge .level {
+      font-size: 0.62em;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      font-weight: 700;
+      margin-bottom: 0.12em;
+    }
+
+    .floor-tag .badge .zh {
+      font-family: var(--serif);
+      font-size: 1.0em;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    .floor-tag .badge .en {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.56em;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.1em;
+    }
+
+    .floor-tag .leader {
+      flex: 1;
+      height: 2px;
+      min-width: 1.2em;
+      background: linear-gradient(90deg, rgba(249,247,242,.95), rgba(249,247,242,.15));
+      border-radius: 1px;
+      position: relative;
+    }
+
+    .floor-tag .leader::after {
+      content: "";
+      position: absolute;
+      right: -0.2em;
+      top: 50%;
+      width: 0.45em;
+      height: 0.45em;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 2px solid var(--orange);
+      transform: translateY(-50%);
+      box-shadow: 0 0 0 3px rgba(232,93,4,.25);
+    }
+
+    .floor-tag.upper {
+      top: 14%;
+      left: 3.5%;
+    }
+
+    .floor-tag.mid {
+      top: 42%;
+      left: 3.5%;
+    }
+
+    .floor-tag.lower {
+      top: 68%;
+      left: 3.5%;
+    }
+
+    .zone-hint {
+      position: absolute;
+      left: 30%;
+      right: 22%;
+      z-index: 2;
+      pointer-events: none;
+      border-left: 2px solid rgba(249,247,242,.55);
+      border-right: 2px solid rgba(249,247,242,.25);
+      background: linear-gradient(90deg, rgba(249,247,242,.12), transparent 40%, transparent 60%, rgba(249,247,242,.06));
+    }
+
+    .zone-hint.upper {
+      top: 8%;
+      height: 20%;
+      border-top: 2px dashed rgba(249,247,242,.45);
+      border-bottom: 2px dashed rgba(249,247,242,.35);
+    }
+
+    .zone-hint.mid {
+      top: 34%;
+      height: 28%;
+      border-top: 2px dashed rgba(249,247,242,.4);
+      border-bottom: 2px dashed rgba(249,247,242,.35);
+      background: linear-gradient(90deg, rgba(232,93,4,.12), transparent 45%, transparent 55%, rgba(232,93,4,.06));
+    }
+
+    .zone-hint.lower {
+      top: 66%;
+      height: 18%;
+      border-top: 2px dashed rgba(249,247,242,.4);
+      border-bottom: 2px dashed rgba(249,247,242,.35);
+    }
+
+    .visual .caption-bar {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      z-index: 4;
+      padding: 1.5em 0.85em 0.65em;
+      background: linear-gradient(transparent, rgba(12,10,8,.82));
+      color: #fff;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.6em;
+    }
+
+    .visual .caption-bar .loc {
+      font-size: 0.76em;
+      letter-spacing: 0.04em;
+      line-height: 1.35;
+    }
+
+    .visual .caption-bar .loc em {
+      display: block;
+      font-style: normal;
+      font-size: 0.85em;
+      opacity: 0.75;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.15em;
+    }
+
+    .thumb-row {
+      position: absolute;
+      top: 0.55em;
+      right: 0.55em;
+      z-index: 5;
+      width: 28%;
+      border-radius: 0.25em;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,.4);
+      border: 2px solid rgba(255,255,255,.9);
+      background: #111;
+    }
+
+    .thumb-row img {
+      width: 100%;
+      height: auto;
+      display: block;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+
+    .thumb-row .tip {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 0.35em 0.4em;
+      background: rgba(12,10,8,.72);
+      color: #fff;
+      font-size: 0.5em;
+      letter-spacing: 0.08em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .content {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 0.65em;
+      min-height: 0;
+    }
+
+    .quote {
+      position: relative;
+      padding: 0.7em 0.9em 0.7em 1em;
+      background: var(--orange-wash);
+      border-left: 3px solid var(--orange);
+      border-radius: 0 0.25em 0.25em 0;
+    }
+
+    .quote .mark {
+      font-family: var(--serif);
+      font-size: 1.6em;
+      color: var(--orange);
+      line-height: 1;
+      position: absolute;
+      top: 0.25em;
+      left: 0.35em;
+      opacity: 0.55;
+    }
+
+    .quote p {
+      font-family: var(--serif);
+      font-size: 0.96em;
+      line-height: 1.55;
+      letter-spacing: 0.03em;
+      color: var(--ink);
+      padding-left: 0.4em;
+    }
+
+    .quote p .en-line {
+      display: block;
+      margin-top: 0.25em;
+      font-family: var(--sans);
+      font-size: 0.88em;
+      font-weight: 600;
+      color: var(--orange);
+      letter-spacing: 0.02em;
+    }
+
+    .quote .by {
+      margin-top: 0.35em;
+      padding-left: 0.4em;
+      font-size: 0.68em;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0.5em;
+      min-height: 0;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 0.3em;
+      padding: 0.6em 0.72em 0.55em;
+      display: flex;
+      flex-direction: column;
+      gap: 0.22em;
+      min-height: 0;
+    }
+
+    .card .num {
+      font-family: var(--sans);
+      font-size: 0.62em;
+      letter-spacing: 0.16em;
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    .card h3 {
+      font-family: var(--serif);
+      font-size: 1.0em;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 1.25;
+    }
+
+    .card h3 .en {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.62em;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.12em;
+    }
+
+    .card p {
+      font-size: 0.76em;
+      line-height: 1.42;
+      color: #3a3530;
+      letter-spacing: 0.02em;
+      margin-top: 0.1em;
+    }
+
+    .card.highlight {
+      background: linear-gradient(160deg, #fff 60%, #fff4eb);
+      border-color: #efc9a8;
+    }
+
+    /* —— Footer —— */
+    .foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1em;
+      border-top: 1px solid var(--line);
+      padding-top: 0.45em;
+      font-size: 0.62em;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+    }
+
+    .foot a {
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .foot .note {
+      max-width: 68%;
+    }
+
+    .foot .brand {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .foot .brand strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* —— Fullscreen —— */
+    .fs-btn {
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      z-index: 20;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(20,20,20,.72);
+      color: #f5f0e8;
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+    }
+
+    .fs-btn:hover { background: rgba(40,40,40,.85); }
+
+    @media print {
+      html, body { background: #fff; overflow: visible; }
+      .viewport { display: block; height: auto; }
+      .stage {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
+        box-shadow: none;
+        font-size: 12px;
+      }
+      .fs-btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="viewport">
+    <article class="stage" id="stage" aria-label="Frontier Tower case study slide">
+
+      <header class="top">
+        <div class="title-block">
+          <div class="kicker"><span class="dot" aria-hidden="true"></span>TEKUMA · CASE STUDY · SF</div>
+          <h1>强运营型科创空间<span class="en">Frontier Tower</span></h1>
+          <p class="subtitle">办公去化 → 强运营增强弹性与产品力 · <strong>16 Floors · Vertical Village</strong> · Mid-Market SF</p>
+        </div>
+        <div class="meta-pills" aria-label="Key facts">
+          <span class="pill accent">16 Floors</span>
+          <span class="pill">995 Market St</span>
+          <span class="pill">~$11M · 2025</span>
+          <span class="pill">750+ Citizens</span>
+          <span class="pill">Membership · Floor Tribes</span>
+        </div>
+      </header>
+
+      <div class="body">
+        <figure class="visual">
+          <img class="hero" src="assets/exterior.jpg" alt="Frontier Tower 外景：Mid-Market 深科技垂直村落塔楼仰视" />
+
+          <div class="zone-hint upper" aria-hidden="true"></div>
+          <div class="zone-hint mid" aria-hidden="true"></div>
+          <div class="zone-hint lower" aria-hidden="true"></div>
+
+          <div class="floor-tag upper">
+            <div class="badge" contenteditable="true">
+              <div class="level">Upper · F14–16</div>
+              <div class="zh">会客厅 · 共工</div>
+              <span class="en">Lounge · Cowork · Flourish</span>
+            </div>
+            <span class="leader" aria-hidden="true"></span>
+          </div>
+
+          <div class="floor-tag mid">
+            <div class="badge" contenteditable="true">
+              <div class="level">Mid · Floor Tribes</div>
+              <div class="zh">主题楼层部落</div>
+              <span class="en">AI · Robotics · Biotech · Eth</span>
+            </div>
+            <span class="leader" aria-hidden="true"></span>
+          </div>
+
+          <div class="floor-tag lower">
+            <div class="badge" contenteditable="true">
+              <div class="level">Base · Commons</div>
+              <div class="zh">活动舱 · 入口</div>
+              <span class="en">Spaceship · Events · Enter</span>
+            </div>
+            <span class="leader" aria-hidden="true"></span>
+          </div>
+
+          <div class="thumb-row" title="白板楼层图 · Floor Stack">
+            <img src="assets/whiteboard.jpg" alt="Frontier Tower 白板楼层图：社区成员讲解垂直村落主题楼层" />
+            <div class="tip">Floor Map</div>
+          </div>
+
+          <figcaption class="caption-bar">
+            <div class="loc">
+              <em>Exterior · 995 Market Street · Mid-Market</em>
+              空置写字楼 → 会员制深科技垂直村落：楼层即产品、社区即运营
+            </div>
+          </figcaption>
+        </figure>
+
+        <div class="content">
+          <blockquote class="quote">
+            <span class="mark" aria-hidden="true">“</span>
+            <p>关于办公去化，可以通过强运营的方式增强弹性和产品力：
+              <span class="en-line">Frontier Tower | 16 Floors. SF's Deep-Tech Vertical Village.</span>
+            </p>
+            <div class="by">Kit · TEKUMA Urban Designer · Slide Hook</div>
+          </blockquote>
+
+          <div class="cards">
+            <section class="card">
+              <div class="num">01 · 办公去化</div>
+              <h3>空置 CRE → 会员产品<span class="en">Vacancy → Product</span></h3>
+              <p>叙事锚定 CRE 20–30% 空置。不坐等大租户，把楼卖成 Citizenship（约 $150–190/月）+ 私办 + 活动舱的弹性产品。</p>
+            </section>
+            <section class="card">
+              <div class="num">02 · 垂直村落</div>
+              <h3>楼层部落 · 偶遇密度<span class="en">Floor Tribes</span></h3>
+              <p>AI / 机器人 / 生科 / Eth / 体适能 / 艺术分层运营；Spaceship 办黑客松与 Town Hall。主题楼层制造 serendipity，而非纯租金表。</p>
+            </section>
+            <section class="card">
+              <div class="num">03 · 强运营</div>
+              <h3>会员 · 活动 · 楼层主理<span class="en">Ops &gt; Fit-out</span></h3>
+              <p>Floor leads + 高频活动 + 公民自治叙事；装修可糙、运营要密。~$11M 拿下前 WeWork / Mid-Market 空楼，用社区速度激活空间。</p>
+            </section>
+            <section class="card highlight">
+              <div class="num">04 · 对尖岗山启示</div>
+              <h3>强运营科创产业社区<span class="en">Jiangangshan Parallel</span></h3>
+              <p>映射：主题楼层（终端/机器人/硬件）+ 会员/弹性工位 + 1F 磁体 + 共享工具与 Demo Day。卖运营范式，不必照搬品牌与共居许可。</p>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <footer class="foot">
+        <div class="note">
+          注：楼层主题以站点与早期白板为准，略有出入，按「主题垂直分区」理解；共居仍在审批中。会员数早期约 200 → 营销称 750+，用区间。
+          Sources:
+          <a href="https://frontiertower.io/" target="_blank" rel="noopener">frontiertower.io</a> ·
+          <a href="https://frontiertower.io/about" target="_blank" rel="noopener">about</a> ·
+          SF Standard May 2025 · xyz.city
+        </div>
+        <div class="brand">
+          <strong>TEKUMA</strong> · 宝安创业路案例库<br />
+          Frontier Tower Case · editable HTML
+        </div>
+      </footer>
+    </article>
+  </div>
+
+  <button class="fs-btn" id="fsBtn" type="button" title="Fullscreen / 全屏">Fullscreen</button>
+  <script>
+    (function () {
+      var btn = document.getElementById('fsBtn');
+      function sync() {
+        btn.textContent = document.fullscreenElement ? 'Exit' : 'Fullscreen';
+      }
+      btn.addEventListener('click', function () {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(function () {});
+        } else {
+          document.exitFullscreen();
+        }
+      });
+      document.addEventListener('fullscreenchange', sync);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'f' || e.key === 'F') btn.click();
+      });
+    })();
+  </script>
+</body>
+</html>
